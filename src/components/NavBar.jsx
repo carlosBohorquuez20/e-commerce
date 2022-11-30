@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   getProductsThunk,
   filterProductsThunk,
@@ -12,12 +13,20 @@ import {
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { Offcanvas } from "react-bootstrap";
+import PurchaseSidebars from "./PurchaseSidebars";
 const NavBar = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product);
   const [categoriesList, setCategoriesList] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  
   useEffect(() => {
     dispatch(getProductsThunk());
     axios
@@ -26,6 +35,7 @@ const NavBar = () => {
   }, []);
 
   return (
+    <>
     <nav>
       <div className="top-nav">
         <div className="left-container">
@@ -39,7 +49,10 @@ const NavBar = () => {
               Register
             </Link>
           </p>
-          <p>Daily Deals</p>
+          <Link as={Link} to="/purchases">
+            <p>Purchases</p>
+          </Link>
+
           <p>Help & Contact</p>
         </div>
         <div className="right-container">
@@ -54,14 +67,16 @@ const NavBar = () => {
             {" "}
             <i className="fa-solid fa-bell"></i>
           </button>
-          <button>
+          <button onClick={handleShow}>
             {" "}
             <i className="fa-solid fa-cart-shopping"></i>
           </button>
         </div>
       </div>
       <div className="input-nav">
-        <h2><Link to={"/"}>E-commerce</Link></h2>
+        <h2>
+          <Link to={"/"}>E-commerce</Link>
+        </h2>
         <div className="all-category-input">
           <input
             placeholder="Search for anything"
@@ -81,11 +96,13 @@ const NavBar = () => {
             ))}
           </select>
         </div>
-        <button onClick={() => dispatch(SerchProductsThunk(searchInput))}>
+        <button onClick={() => {dispatch(SerchProductsThunk(searchInput))}}>
           Search
         </button>
       </div>
     </nav>
+        <PurchaseSidebars show={show} handleClose={handleClose}/>
+    </>
   );
 };
 

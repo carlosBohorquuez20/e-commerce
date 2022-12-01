@@ -24,6 +24,9 @@ import { Navigation } from "swiper";
 import black1 from "../img/black1.png";
 import controle from "../img/controle.png";
 import mobile from "../img/mobile.png";
+import laptop from "../img/laptop.png";
+import tv from "../img/tv.png";
+import kitchen from "../img/Kitchen.png";
 const Home = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product);
@@ -40,36 +43,47 @@ const Home = () => {
   console.log(categoriesList);
   return (
     <div className="home-container">
-      <div className="slide-Image">
-        <Swiper
-          rewind={true}
-          navigation={true}
-          modules={[Navigation]}
-          className="mySwiper"
+      <div className="input-container">
+        <input
+          placeholder="Apple, Samsung, Macbook, ..."
+          type="text"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        <button
+          onClick={() => {
+            dispatch(SerchProductsThunk(searchInput));
+          }}
         >
-          <SwiperSlide>
-            <img src={black1} alt="" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={controle} alt="" />
-          </SwiperSlide>
-        </Swiper>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
       <div className="home-middle">
-        <p>
-          {" "}
-          <b>These will get your attention</b>
-        </p>
-        <ul className="circle-category">
-          {categoriesList.map((category) => (
-            <li
-              key={category.id}
-              onClick={() => dispatch(filterProductsThunk(category.id))}
-            >
-              <img src={mobile} alt="mobile" />
-              {category.name}
-            </li>
-          ))}
+        <ul className="box-category">
+          <li   onClick={() => dispatch(filterProductsThunk(categoriesList[0]?.id))}>
+            <div>
+            <i class="fa-solid fa-kitchen-set"></i>
+            </div>
+            {categoriesList[0]?.name}
+          </li>
+          <li  onClick={() => dispatch(filterProductsThunk(categoriesList[1]?.id))}>
+            <div>
+            <i class="fa-solid fa-tv"></i>
+            </div>
+            {categoriesList[1]?.name}
+          </li>
+          <li  onClick={() => dispatch(filterProductsThunk(categoriesList[2]?.id))}>
+            <div>
+            <i class="fa-solid fa-mobile"></i>
+            </div>
+            {categoriesList[2]?.name}
+          </li>
+          <li  onClick={() => dispatch(filterProductsThunk(categoriesList[3]?.id))}>
+            <div>
+            <i class="fa-solid fa-laptop"></i>
+            </div>
+            {categoriesList[3]?.name}
+          </li>
         </ul>
       </div>
       <ul className="list-product">
@@ -80,7 +94,7 @@ const Home = () => {
                 <img src={product.productImgs[0]} alt="product image" />
               </div>
               <div className="line-card"></div>
-              <p>{product.title}</p>
+              <p className="name-product">{product.title}</p>
               <div className="price-home">
                 <div>
                   <p>

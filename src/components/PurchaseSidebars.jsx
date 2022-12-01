@@ -2,7 +2,7 @@ import React from 'react';
 import { Offcanvas } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getCartThunk} from "../store/slices/cart.slice";
+import { checkoutPurchasesThunk, getCartThunk} from "../store/slices/cart.slice";
 import { useSelector } from "react-redux";
 const PurchaseSidebars = ({show, handleClose}) => {
 
@@ -20,8 +20,13 @@ const PurchaseSidebars = ({show, handleClose}) => {
       <Offcanvas.Title>Offcanvas</Offcanvas.Title>
     </Offcanvas.Header>
     <Offcanvas.Body>
-      Some text as placeholder. In real life you can have the elements you
-      have chosen. Like, text, images, lists, etc.
+      {
+        cart.map((cartProduct) => (
+          <div key={cartProduct.id}>{cartProduct.title}</div>
+        ))
+
+      }
+      <button onClick={() => dispatch(checkoutPurchasesThunk())}>CHECKOUT</button>
     </Offcanvas.Body>
   </Offcanvas>
   );

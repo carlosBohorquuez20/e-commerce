@@ -3,8 +3,11 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getPurchasesThunk } from "../store/slices/purchases.slice";
 import { useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import "../styles/purchases.css";
-
+import PurchaseDate from "../components/PurchaseDate";
+import PurchaseImage from "../components/PurchaseImage";
+import laptop from "../img/laptop.png";
 const Purchases = () => {
   const dispatch = useDispatch();
 
@@ -13,39 +16,53 @@ const Purchases = () => {
   useEffect(() => {
     dispatch(getPurchasesThunk());
   }, []);
- console.log(purchases)
+  //console.log(purchases);
   return (
     <div className="purchases-main">
+      <div className="back-purchases">
+        <Link to={"/"}>
+          <p>
+            <i className="fa-solid fa-chevron-left"></i> Back
+          </p>
+        </Link>
+      </div>
       <div className="purchase-container">
-        <div className="text-purchases-top">
-          <p>Home</p>
-          <li>purchases</li>
-        </div>
-        <h4>My purchases</h4>
-        {
-          purchases?.map(purchase => (
-            <div key={purchase.id} className="purchase-item">
-            <div className="order-text">
-              <p>order number:{purchase.cart.products.productsInCart?.productId}</p>
-              <p>Order date: </p>
-            </div>
-            {
-              purchase.cart.products.map(product => (
-                <div className="product-purchase">
-                  <div><img src="" alt="" /></div>
+        <h4>My Purchases</h4>
+        {purchases.map((purchase) => (
+          <div key={purchase.id} className="purchase-item">
+            <PurchaseDate purchase={purchase} />
+            {purchase.cart.products?.map((product) => (
+              <div key={product.id} className="product-purchase">
+                <div className="img-purchase">
+                  <img src={laptop} alt="product" />
+                </div>
+                <div className="purchase-details">
                   <div className="title-product">
-                  <p>{product.title}</p>
+                    <p>{product.title}</p>
                   </div>
-                  <div className="quanty">{product.productsInCart.quantity}</div>
-                  <div className="price-box"><p><b>${product.price}</b></p></div>
+                  <div className="stars-purchase">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <p>4.5 / 5</p>
+                  </div>
+                  <div className="quanty-price">
+                    <div className="price-box">
+                      <p>
+                        <b>${product.price}</b>
+                      </p>
+                    </div>
+                    <div className="quanty">
+                      {product.productsInCart.quantity}
+                    </div>
+                  </div>
+                </div>
               </div>
-              ))
-            }
-       
+            ))}
           </div>
-          ))
-        }
-
+        ))}
       </div>
     </div>
   );

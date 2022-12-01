@@ -14,7 +14,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 function App() {
   const isLoading = useSelector((state) => state.isLoading);
   return (
-    <HashRouter>
+    <HashRouter >
       <NavBar />
       {isLoading && <LoadingScreen />}
       <Routes>
@@ -25,7 +25,7 @@ function App() {
           <Route path="/purchases" element={<Purchases />} />
         </Route>
       </Routes>
-      <Footer />
+    
     </HashRouter>
   );
 }

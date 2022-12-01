@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { Offcanvas } from "react-bootstrap";
 import PurchaseSidebars from "./PurchaseSidebars";
+import "../styles/navBar.css";
 const NavBar = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product);
@@ -35,74 +36,41 @@ const NavBar = () => {
   }, []);
 
   return (
-    <>
+ 
     <nav>
-      <div className="top-nav">
+      <div className="nav-container">
         <div className="left-container">
-          <p>
-            !Hello¡{" "}
-            <Link as={Link} to="/login">
-              Login
-            </Link>{" "}
-            or{" "}
-            <Link as={Link} to="/register">
-              Register
-            </Link>
-          </p>
-          <Link as={Link} to="/purchases">
-            <p>Purchases</p>
+          <div className="icons-nav">
+          <Link to={"/"}>
+            <i class="fa-solid fa-house"></i>
+            <p>Home</p>
           </Link>
-
-          <p>Help & Contact</p>
+          </div>
+          <div className="icons-nav">
+          <Link as={Link} to="/login">
+            <i className="fa-solid fa-user"></i>
+            <p>Login</p>
+            </Link>
+          </div>
+          <div className="icons-nav">
+          <Link as={Link} to="/register">
+            <i class="fa-solid fa-user-plus"></i>
+            <p>Register</p>
+            </Link>
+          </div>
+          <div className="icons-nav">
+          <Link as={Link} to="/purchases">
+            <i class="fa-solid fa-store"></i>
+           <p>Purchases</p>
+          </Link>
+          </div>
         </div>
-        <div className="right-container">
-          <p>Ship to</p>
-          <p>
-            {" "}
-            <i className="fa-solid fa-globe"></i> English
-          </p>
-          <p>Sell</p>
-          <p>Watchlist </p>
-          <button>
-            {" "}
-            <i className="fa-solid fa-bell"></i>
-          </button>
-          <button onClick={handleShow}>
-            {" "}
-            <i className="fa-solid fa-cart-shopping"></i>
-          </button>
+        <div className="cart-container">
+            <i onClick={handleShow} className="fa-solid fa-cart-shopping"></i>
         </div>
-      </div>
-      <div className="input-nav">
-        <h2>
-          <Link to={"/"}>E-commerce</Link>
-        </h2>
-        <div className="all-category-input">
-          <input
-            placeholder="Search for anything"
-            type="text"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-          <select name="All Categories" id="">
-            <option selected>All categories</option>
-            {categoriesList.map((category) => (
-              <option
-                key={category.id}
-                onClick={() => dispatch(filterProductsThunk(category.id))}
-              >
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button onClick={() => {dispatch(SerchProductsThunk(searchInput))}}>
-          Search
-        </button>
+        <PurchaseSidebars show={show} handleClose={handleClose}/>
       </div>
     </nav>
-        <PurchaseSidebars show={show} handleClose={handleClose}/>
-    </>
   );
 };
 

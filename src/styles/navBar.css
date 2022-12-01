@@ -1,0 +1,49 @@
+.nav-container {
+  width: 72px;
+  height: 908px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px;
+  gap: 10px;
+  left: 16px;
+  top: 1.56%;
+  bottom: 1.56%;
+  position: absolute;
+  background: white;
+  border-radius: 8px;
+}
+
+.left-container {
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 30px;
+  padding-top: 10px;
+}
+
+.cart-container {
+  width: 72px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.icons-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.icons-nav a {
+  text-decoration: none;
+  color: black;
+}

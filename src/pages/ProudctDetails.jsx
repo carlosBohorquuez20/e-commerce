@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import "../styles/productDetails.css";
+import { createPurchasesThunk } from "../store/slices/cart.slice";
 
 const ProudctDetails = () => {
   const dispatch = useDispatch();
@@ -28,44 +29,78 @@ const ProudctDetails = () => {
 
   console.log(product);
 
+  const [quantity, setQuantity] = useState("");
+
+  const addToPurchases = () => {
+    const productCart = {
+      id: product.id,
+      quantity: quantity,
+    };
+    dispatch(createPurchasesThunk(productCart));
+  };
+
   return (
     <div className="prduct-details-container">
-      <div className="product-details-center">
-        <div className="images-deatils">
-          <div className="img-main">
+      <div className="back">
+        <Link to={"/"}>
+          <p>
+            <i class="fa-solid fa-chevron-left"></i> Back
+          </p>
+        </Link>
+      </div>
+      <div className="details-container">
+        <div className="product-details-center">
+          <div className="images-deatils">
+            <div className="all-image-product">
+              {product?.productImgs?.map((imgProduct) => (
+                <div className="all-image-left">
+                  <img src={imgProduct} alt="product image" />
+                </div>
+              ))}
+            </div>
             <div className="img-select">
               <img src={product?.productImgs[0]} alt="product image" />
             </div>
-            <div className="all-image-product">
-              {product?.productImgs?.map((imgProduct) => (
-                <img src={imgProduct} alt="product image" />
-              ))}
-            </div>
           </div>
-        </div>
-        <div className="prodcut-description">
-          <h2>{product?.title}</h2>
-          <p>{product?.description}</p>
-          <div className="prodcut-price">
-            <div>
-              <p>Price</p>
-              <p>
-                <b>${product?.price}</b>
-              </p>
+          <div className="product-description">
+            <h2>{product?.title}</h2>
+            <div className="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+              <p>4.5 / 5</p>
             </div>
-            <div className="quantity">
-              <p>Quantity</p>
-              <div className="quantity-container">
-                <button>-</button>
-                <input type="text" />
-                <button>+</button>
+            <p>{product?.description}</p>
+            <div className="product-price">
+              <div>
+                <p>Price</p>
+                <p>
+                  <b>${product?.price}</b>
+                </p>
+              </div>
+              <div className="quantity">
+                <p>Quantity</p>
+                <div className="quantity-container">
+                  <button>-</button>
+                  <input
+                    type="text"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                  />
+                  <button>+</button>
+                </div>
               </div>
             </div>
+            <button onClick={addToPurchases} className="button-add-cart">
+              Add to cart
+            </button>
           </div>
-          <button className="button-add-cart">Add to cart</button>
         </div>
       </div>
-      <div className="other-prodcuts">
+      <div className="other-products">
+        <div className="line-separate"></div>
         <h3>Discover similar items</h3>
         <ul className="list-product-other">
           {categoryProduct.map((category) => (

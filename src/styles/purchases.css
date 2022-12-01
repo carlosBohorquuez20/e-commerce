@@ -1,55 +1,103 @@
-.purchases-main{
+.purchases-main {
   width: 100%;
   height: 100%;
+  background: #ededed;
+  margin-left: 90px;
+  overflow-y: scroll;
+  position: absolute;
   display: flex;
-  justify-content: center;
-
+  align-items: center;
+  flex-direction: column;
+  padding-top: 100px;
+  overflow-x: hidden;
 }
 
-.purchase-container{
-  width: 900px;
-  height: auto;
-  padding-top: 20px;
-  
+.back-purchases {
+  width: 100%;
+  margin-left: 90px;
+}
 
+.back-purchases a {
+  text-decoration: none;
+  color: black;
+}
+
+.purchase-container {
+  width: 877px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  gap: 24px;
+}
+
+.purchase-container h4 {
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48.83px;
+  line-height: 59px;
+  color: #1a1f16;
+}
+
+.purchase-item {
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
-  padding: 10px;
+  justify-content: center;
+  padding: 16px 24px;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 21px;
 }
 
-.text-purchases-top{
-  width: 100%;
-  height: auto;
-  display: flex;
-  gap: 20px;
-
-}
-
-.purchase-item{
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-
-}
-
-.order-text{
+.order-text {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid black;
   padding: 5px;
 }
 
-.product-purchase{
+.product-purchase {
+  width: 99%;
+  height: 278px;
   display: flex;
-  justify-content: space-evenly;
-  padding: 5px;
- 
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 16px 24px;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 21px;
 }
-.title-product{
+
+.img-purchase {
+  width: 50%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-purchase img {
+  width: 75%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.purchase-detail {
+  width: 609.46px;
+  height: 256px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
+}
+
+.title-product {
   width: 300px;
   height: auto;
   display: flex;
@@ -57,17 +105,43 @@
   margin: 5px;
 }
 
-.quanty{
+.title-product p {
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28.25px;
+  line-height: 38px;
+
+  color: #1a1f16;
+}
+.stars-purchase {
+  width: 243px;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 0px;
+  gap: 8px;
+  color: #12805d;
+}
+
+.quanty-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quanty {
   width: 50px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   margin: 5px;
 }
 
-.price-box{
+.price-box {
   width: 90px;
   height: 70px;
   display: flex;

@@ -8,6 +8,7 @@ import "../styles/purchases.css";
 import PurchaseDate from "../components/PurchaseDate";
 import PurchaseImage from "../components/PurchaseImage";
 import laptop from "../img/laptop.png";
+import Footer from "../components/Footer";
 const Purchases = () => {
   const dispatch = useDispatch();
 
@@ -64,6 +65,7 @@ const Purchases = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

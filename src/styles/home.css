@@ -1,14 +1,20 @@
 .home-container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: #ededed;
   margin-left: 90px;
   overflow-y: scroll;
+  overflow-x: hidden;
   position: absolute;
   display: flex;
   align-items: center;
   flex-direction: column;
   
+}
+
+.home-center-box{
+  width: 100%;
+  height: 5000px;
 }
 
 
@@ -46,9 +52,9 @@
   background: #ffffff;
   color: black  ;
   border-radius: 13px;
-  position: absolute;
+  position: relative;
   border: 1px solid rgba(0, 0, 0, 0.5);
-  right:698px;
+  right: 50px;
 }
 
 .input-container button:hover {
@@ -59,7 +65,8 @@
   width: 100%;
   height: auto;
   padding: 20px;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #1A1F1680;
 }
 
 .home-middle p {
@@ -91,6 +98,7 @@
   cursor: pointer;
   border-radius: 10px;
   background: #ffffff;
+  box-shadow: 0px 4px 16px rgba(26, 31, 22, 0.15);
 }
 .box-category li div {
   font-size: 34px;
@@ -110,7 +118,7 @@
 
 .list-product {
   width: 100%;
-  height: auto;
+  height: 10%;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -122,15 +130,14 @@
 .list-product li {
   width: 340px;
   height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.075);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  box-shadow: 0px 4px 16px rgba(26, 31, 22, 0.15);
   border-radius: 5px;
- background: #1A1F1680;
+  background: #1A1F1680;
 
 
 }

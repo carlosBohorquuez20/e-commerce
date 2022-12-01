@@ -5,66 +5,89 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import "../styles/login.css";
 import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Footer from "../components/Footer";
+import { useState } from "react";
 const Login = () => {
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm();
-
+  const [errorLogin, setErrorLogin] = useState("");
   const navigate = useNavigate();
 
   const submit = (data) => {
     console.log(data);
     axios
-    .post(`https://e-commerce-api.academlo.tech/api/v1/users/login`, data)
-    .then((res) => {
-      navigate("/");
-      console.log(res);
-      localStorage.setItem("token", res.data.data.token); // res.data.data.token
-    })
-    .catch((error) => {
-      if (error.response?.status === 404) {
-        alert("Credenciales incorrectas");
-      } else {
-        console.log(error.response?.data);
-      }
-    });
+      .post(`https://e-commerce-api.academlo.tech/api/v1/users/login`, data)
+      .then((res) => {
+        navigate("/");
+        console.log(res);
+        localStorage.setItem("token", res.data.data.token); // res.data.data.token
+      })
+      .catch((error) => {
+        if (error.response?.status === 404) {
+          setErrorLogin("Invalid credentials");
+        } else {
+          console.log(error.response?.data);
+        }
+      });
   };
 
   useEffect(() => {
     dispatch(getProductsThunk());
-  
   }, []);
 
   return (
     <div className="login-container">
-     <Form
-      onSubmit={handleSubmit(submit)}
-      style={{ maxWidth: 500, margin: "0 auto" }}
-    >
-      <h1>Login</h1>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          {...register("email")}
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          {...register("password")}
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+      <div className="login-center">
+        <form action="" onSubmit={handleSubmit(submit)}>
+          <h3>Login</h3>
+          <div className="test-data">
+            <p>Test data</p>
+            <div className="usuario-demo">
+              <p>
+                <i class="fa-solid fa-envelope"></i> john@gmail.com
+              </p>
+              <p>
+                <i class="fa-solid fa-lock"></i> john1234
+              </p>
+            </div>
+          </div>
+          <div className="input-form-box">
+            <label htmlFor="email">Email adress</label>
+            <input
+              type="email"
+              required
+              placeholder="Enter email"
+              {...register("email")}
+            />
+          </div>
+          <div className="input-form-box">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              required
+              placeholder="Password"
+              {...register("password")}
+            />
+          </div>
+          <p>{errorLogin}</p>
+          <div className="button-login">
+            <button type="submit">Login</button>
+          </div>
+          <div>
+            <p>
+              Don't have an account?{" "}
+              <Link to={"/register"} className="link-singup">
+                Sign up
+              </Link>
+            </p>
+          </div>
+        </form>
+      </div>
+      <Footer />
     </div>
   );
 };

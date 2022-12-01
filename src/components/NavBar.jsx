@@ -42,7 +42,7 @@ const NavBar = () => {
         <div className="left-container">
           <div className="icons-nav">
           <Link to={"/"}>
-            <i class="fa-solid fa-house"></i>
+            <i className="fa-solid fa-house"></i>
             <p>Home</p>
           </Link>
           </div>
@@ -54,13 +54,13 @@ const NavBar = () => {
           </div>
           <div className="icons-nav">
           <Link as={Link} to="/register">
-            <i class="fa-solid fa-user-plus"></i>
+            <i className="fa-solid fa-user-plus"></i>
             <p>Register</p>
             </Link>
           </div>
           <div className="icons-nav">
           <Link as={Link} to="/purchases">
-            <i class="fa-solid fa-store"></i>
+            <i className="fa-solid fa-store"></i>
            <p>Purchases</p>
           </Link>
           </div>

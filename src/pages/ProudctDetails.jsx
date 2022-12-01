@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import "../styles/productDetails.css";
 import { createPurchasesThunk } from "../store/slices/cart.slice";
+import Footer from "../components/Footer";
 
 const ProudctDetails = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const ProudctDetails = () => {
 
   console.log(product);
 
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState("1");
 
   const addToPurchases = () => {
     const productCart = {
@@ -44,7 +45,7 @@ const ProudctDetails = () => {
       <div className="back">
         <Link to={"/"}>
           <p>
-            <i class="fa-solid fa-chevron-left"></i> Back
+            <i className="fa-solid fa-chevron-left"></i> Back
           </p>
         </Link>
       </div>
@@ -53,7 +54,7 @@ const ProudctDetails = () => {
           <div className="images-deatils">
             <div className="all-image-product">
               {product?.productImgs?.map((imgProduct) => (
-                <div className="all-image-left">
+                <div key={imgProduct} className="all-image-left">
                   <img src={imgProduct} alt="product image" />
                 </div>
               ))}
@@ -65,11 +66,11 @@ const ProudctDetails = () => {
           <div className="product-description">
             <h2>{product?.title}</h2>
             <div className="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half-stroke"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star-half-stroke"></i>
               <p>4.5 / 5</p>
             </div>
             <p>{product?.description}</p>
@@ -129,6 +130,7 @@ const ProudctDetails = () => {
           ))}
         </ul>
       </div>
+      <Footer />
     </div>
   );
 };

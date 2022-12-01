@@ -1,0 +1,94 @@
+.offcanvas-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 20px;
+}
+
+.cart-box{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+.product-cart{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+  border: 1px solid rgba(26, 31, 22, 0.15);
+  border-radius: 10px;
+  box-shadow: 0px 4px 16px rgba(26, 31, 22, 0.15);
+}
+
+.brand{
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand i{
+  color: red;
+  cursor: pointer;
+}
+
+.quantity-cart{
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.price-cart-item{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+
+.button-cart{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.total-cart{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(26, 31, 22, 0.15);
+}
+
+.button-cart button{
+  width: 50%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 24px;
+  gap: 8px;
+  background: #1a1f16;
+  border-radius: 10px;
+}
+
+.button-cart button{
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+}
+

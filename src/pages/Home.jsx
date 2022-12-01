@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { Button, FormControl, InputGroup } from "react-bootstrap";
 import axios from "axios";
 import "../styles/home.css";
+import "../styles/footer.css";
 import { useRef } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,6 +28,7 @@ import mobile from "../img/mobile.png";
 import laptop from "../img/laptop.png";
 import tv from "../img/tv.png";
 import kitchen from "../img/Kitchen.png";
+import Footer from "../components/Footer";
 const Home = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product);
@@ -43,6 +45,7 @@ const Home = () => {
   console.log(categoriesList);
   return (
     <div className="home-container">
+      <div className="home-center-box">
       <div className="input-container">
         <input
           placeholder="Apple, Samsung, Macbook, ..."
@@ -60,27 +63,35 @@ const Home = () => {
       </div>
       <div className="home-middle">
         <ul className="box-category">
-          <li   onClick={() => dispatch(filterProductsThunk(categoriesList[0]?.id))}>
+          <li
+            onClick={() => dispatch(filterProductsThunk(categoriesList[0]?.id))}
+          >
             <div>
-            <i class="fa-solid fa-kitchen-set"></i>
+              <i class="fa-solid fa-kitchen-set"></i>
             </div>
             {categoriesList[0]?.name}
           </li>
-          <li  onClick={() => dispatch(filterProductsThunk(categoriesList[1]?.id))}>
+          <li
+            onClick={() => dispatch(filterProductsThunk(categoriesList[1]?.id))}
+          >
             <div>
-            <i class="fa-solid fa-tv"></i>
+              <i class="fa-solid fa-tv"></i>
             </div>
             {categoriesList[1]?.name}
           </li>
-          <li  onClick={() => dispatch(filterProductsThunk(categoriesList[2]?.id))}>
+          <li
+            onClick={() => dispatch(filterProductsThunk(categoriesList[2]?.id))}
+          >
             <div>
-            <i class="fa-solid fa-mobile"></i>
+              <i class="fa-solid fa-mobile"></i>
             </div>
             {categoriesList[2]?.name}
           </li>
-          <li  onClick={() => dispatch(filterProductsThunk(categoriesList[3]?.id))}>
+          <li
+            onClick={() => dispatch(filterProductsThunk(categoriesList[3]?.id))}
+          >
             <div>
-            <i class="fa-solid fa-laptop"></i>
+              <i class="fa-solid fa-laptop"></i>
             </div>
             {categoriesList[3]?.name}
           </li>
@@ -112,6 +123,8 @@ const Home = () => {
           </li>
         ))}
       </ul>
+      </div>
+      <Footer />
     </div>
   );
 };

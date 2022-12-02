@@ -13,18 +13,20 @@ import { useSelector } from "react-redux";
 import Footer from "./components/Footer";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 function App() {
+
+  const [modalNav, setModalNav] = useState(false);
   const isLoading = useSelector((state) => state.isLoading);
   return (
     <HashRouter >
-      <NavBar />
+      <NavBar  modalNav={modalNav}  setModalNav={setModalNav}/>
       {isLoading && <LoadingScreen />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/product/:id" element={<ProudctDetails />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register/>} />
+        <Route path="/" element={<Home modalNav={modalNav}  setModalNav={setModalNav}/>} />
+        <Route path="/product/:id" element={<ProudctDetails modalNav={modalNav} setModalNav={setModalNav} />} />
+        <Route path="/login" element={<Login  modalNav={modalNav} setModalNav={setModalNav}/>} />
+        <Route path="/register" element={<Register modalNav={modalNav} setModalNav={setModalNav}/>} />
         <Route element={<ProtectedRoutes/>}>
-          <Route path="/purchases" element={<Purchases />} />
+          <Route path="/purchases" element={<Purchases  modalNav={modalNav} setModalNav={setModalNav}/>} />
         </Route>
       </Routes>
     </HashRouter>

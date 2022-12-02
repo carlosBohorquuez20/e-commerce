@@ -9,7 +9,7 @@ import PurchaseDate from "../components/PurchaseDate";
 import PurchaseImage from "../components/PurchaseImage";
 import laptop from "../img/laptop.png";
 import Footer from "../components/Footer";
-const Purchases = () => {
+const Purchases = ({modalNav, setModalNav}) => {
   const dispatch = useDispatch();
 
   const purchases = useSelector((state) => state.purchases);
@@ -17,6 +17,12 @@ const Purchases = () => {
   useEffect(() => {
     dispatch(getPurchasesThunk());
   }, []);
+
+  const modalActive = () => {
+    setModalNav(true);
+    
+  }
+
   //console.log(purchases);
   return (
     <div className="purchases-main">
@@ -26,6 +32,7 @@ const Purchases = () => {
             <i className="fa-solid fa-chevron-left"></i> Back
           </p>
         </Link>
+        <i onClick={modalActive} class="fa-solid fa-bars menu-mobile black-menu"></i>
       </div>
       <div className="purchase-container">
         <h4>My Purchases</h4>

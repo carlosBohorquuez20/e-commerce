@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "../components/Footer";
 import { useState } from "react";
-const Login = () => {
+const Login = ({ modalNav, setModalNav }) => {
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm();
@@ -38,9 +38,19 @@ const Login = () => {
     dispatch(getProductsThunk());
   }, []);
 
+  const modalActive = () => {
+    setModalNav(true);
+  };
+
   return (
     <div className="login-container">
       <div className="login-center">
+        <div className="menu-login">
+          <i
+            onClick={modalActive}
+            class="fa-solid fa-bars menu-mobile black-menu"
+          ></i>
+        </div>
         <form action="" onSubmit={handleSubmit(submit)}>
           <h3>Login</h3>
           <div className="test-data">

@@ -13,15 +13,15 @@ import {
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Offcanvas } from "react-bootstrap";
+import { Modal, Offcanvas } from "react-bootstrap";
 import PurchaseSidebars from "./PurchaseSidebars";
 import "../styles/navBar.css";
-const NavBar = () => {
+const NavBar = ({modalNav, setModalNav}) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product);
   const [categoriesList, setCategoriesList] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-
+  //const [modalNav, setModalNav] = useState(false);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -35,31 +35,38 @@ const NavBar = () => {
       .then((res) => setCategoriesList(res.data.data.categories));
   }, []);
 
+  const closeModal = () =>{
+    setModalNav(false)
+   
+  }
+  
+
   return (
  
-    <nav>
+    <nav className={`${modalNav == true ? "modal-active" : "modal-desactive"} `}>
       <div className="nav-container">
+      <i onClick={closeModal} className={`fa-solid fa-x close-icon`}></i>
         <div className="left-container">
           <div className="icons-nav">
-          <Link to={"/"}>
+          <Link to={"/"}  onClick={closeModal}>
             <i className="fa-solid fa-house"></i>
             <p>Home</p>
           </Link>
           </div>
           <div className="icons-nav">
-          <Link as={Link} to="/login">
+          <Link as={Link} to="/login"  onClick={closeModal}>
             <i className="fa-solid fa-user"></i>
             <p>Login</p>
             </Link>
           </div>
           <div className="icons-nav">
-          <Link as={Link} to="/register">
+          <Link as={Link} to="/register"  onClick={closeModal}>
             <i className="fa-solid fa-user-plus"></i>
             <p>Register</p>
             </Link>
           </div>
           <div className="icons-nav">
-          <Link as={Link} to="/purchases">
+          <Link as={Link} to="/purchases" onClick={closeModal}>
             <i className="fa-solid fa-store"></i>
            <p>Purchases</p>
           </Link>

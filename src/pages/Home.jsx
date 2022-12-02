@@ -29,18 +29,23 @@ import laptop from "../img/laptop.png";
 import tv from "../img/tv.png";
 import kitchen from "../img/Kitchen.png";
 import Footer from "../components/Footer";
-const Home = () => {
+const Home = ({modalNav, setModalNav}) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product);
   const [categoriesList, setCategoriesList] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-
+ 
   useEffect(() => {
     dispatch(getProductsThunk());
     axios
       .get("https://e-commerce-api.academlo.tech/api/v1/products/categories/")
       .then((res) => setCategoriesList(res.data.data.categories));
   }, []);
+
+  const modalActive = () => {
+    setModalNav(true);
+    
+  }
 
   console.log(categoriesList);
   return (
@@ -60,6 +65,7 @@ const Home = () => {
         >
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
+        <i onClick={modalActive} class="fa-solid fa-bars menu-mobile"></i>
       </div>
       <div className="home-middle">
         <ul className="box-category">

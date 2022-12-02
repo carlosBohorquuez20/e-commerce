@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "../components/Footer";
 
-const Register = () => {
+const Register = ({ modalNav, setModalNav }) => {
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm();
@@ -27,8 +27,20 @@ const Register = () => {
   useEffect(() => {
     dispatch(getProductsThunk());
   }, []);
+
+  const modalActive = () => {
+    setModalNav(true);
+  };
+
+
   return (
     <div className="register-container">
+       <div className="menu-login">
+          <i
+            onClick={modalActive}
+            class="fa-solid fa-bars menu-mobile black-menu"
+          ></i>
+        </div>
       <div className="register-center">
         <form action="" onSubmit={handleSubmit(submit)}>
           <h3>Register</h3>

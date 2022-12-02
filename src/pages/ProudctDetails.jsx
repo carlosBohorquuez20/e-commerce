@@ -9,7 +9,7 @@ import "../styles/productDetails.css";
 import { createPurchasesThunk } from "../store/slices/cart.slice";
 import Footer from "../components/Footer";
 
-const ProudctDetails = () => {
+const ProudctDetails = ({modalNav, setModalNav}) => {
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -40,6 +40,12 @@ const ProudctDetails = () => {
     dispatch(createPurchasesThunk(productCart));
   };
 
+  const modalActive = () => {
+    setModalNav(true);
+    
+  }
+
+
   return (
     <div className="prduct-details-container">
       <div className="back">
@@ -48,6 +54,7 @@ const ProudctDetails = () => {
             <i className="fa-solid fa-chevron-left"></i> Back
           </p>
         </Link>
+        <i onClick={modalActive} class="fa-solid fa-bars menu-mobile black-menu"></i>
       </div>
       <div className="details-container">
         <div className="product-details-center">

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import "../styles/purchases.css";
 import PurchaseDate from "../components/PurchaseDate";
-import PurchaseImage from "../components/PurchaseImage";
+
 import laptop from "../img/laptop.png";
 import Footer from "../components/Footer";
 const Purchases = ({modalNav, setModalNav}) => {

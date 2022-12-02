@@ -12,14 +12,14 @@
 
 .nav-container {
   width: 72px;
-  height: 908px;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 1px;
   gap: 10px;
-  left: 16px;
+  left: 10px;
   top: 1.56%;
   bottom: 1.56%;
   position: absolute;

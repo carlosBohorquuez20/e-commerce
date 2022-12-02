@@ -25,7 +25,14 @@ const NavBar = ({modalNav, setModalNav}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () =>{   
+  const token = localStorage.getItem("token");
+  if(token){
+    setShow(true);
+  }else{
+    alert("error")
+  } 
+}
 
   
   useEffect(() => {

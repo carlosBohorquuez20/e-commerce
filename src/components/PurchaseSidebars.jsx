@@ -25,7 +25,7 @@ const PurchaseSidebars = ({ show, handleClose }) => {
   let total = 0;
 
   cart?.forEach(element => {
-      total += Number.parseInt(element.price)
+      total += Number.parseInt(element.price * element.productsInCart.quantity)
   });
 
 

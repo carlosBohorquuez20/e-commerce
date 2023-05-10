@@ -60,7 +60,6 @@
     color: white;
     display: block;
     font-size: 34px;
-    
     cursor: pointer;
   }
 }
@@ -84,7 +83,6 @@
     width: 300px;
     height: 56px;
   }
-  
 }
 
 .input-container h2 a {
